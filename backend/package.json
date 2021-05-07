@@ -4,6 +4,7 @@
   "description": "simple express typescript server",
   "main": "index.ts",
   "dependencies": {
+    "@types/cors": "^2.8.10",
     "cors": "^2.8.5",
     "dotenv": "^9.0.0",
     "express": "^4.17.1",
