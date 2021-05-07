@@ -1,44 +1,31 @@
 import Layout from '@/components/Layout'
 import { ApiUrl } from '../_app'
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import { useRouter } from 'next/dist/client/router'
 
-export async function getStaticPaths() {
-  // Call an external API endpoint to get posts
-  const res = await fetch(`${ApiUrl}/diseases`)
-  const diseases: Disease[] = await res.json()
-
-  // Get the paths we want to pre-render based on diseases
-  const paths = diseases.map((disease) => ({
-    params: { id: disease.id.toString() },
-  }))
-
-  // We'll pre-render only these paths at build time.
-  // { fallback: false } means other routes should 404.
-  return { paths, fallback: true }
-}
-
-export async function getStaticProps({ params }) {
-  // params contains the post `id`.
-  // If the route is like /posts/1, then params.id is 1
-  const res = await fetch(`${ApiUrl}/diseases/${params.id}`)
-  const data = await res.json()
-
-  // Pass post data to the page via props
-  return { props: { data } }
-}
-
-type Props = {
-  data: Disease
-}
-
-export default function EditDisease({ data }: Props) {
+export default function EditDisease() {
   const router = useRouter()
-  const [state, setState] = useState<Disease>(data)
+  const [loading, useLoading] = useState(true)
+  const [state, setState] = useState<Disease>({
+    id: 0,
+    name: '',
+    picture: '',
+    patient_id: '',
+    patient_name: '',
+    patient_age: '',
+  })
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(`${ApiUrl}/diseases/${state.id}`)
+      setState(await res.json())
+    }
+    fetchData()
+  }, [])
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    await fetch(`${ApiUrl}/diseases/${data.id}`, {
+    await fetch(`${ApiUrl}/diseases/${state.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
@@ -54,6 +41,9 @@ export default function EditDisease({ data }: Props) {
       [e.target.name]: e.target.value,
     }))
   }
+
+  if (loading) return <div>Loading...</div>
+
   return (
     <Layout title="Edit Disease">
       <div>
