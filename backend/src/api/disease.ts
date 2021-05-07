@@ -8,19 +8,34 @@ router.get('/diseases', async (req, res) => {
     const [rows] = await db.query(`
     SELECT
         disease.*,
-        patient.NAME AS patient_name,
+        patient.name AS patient_name,
         patient.age AS patient_age 
     FROM
         disease
-        LEFT JOIN patient ON disease.patient_id = patient.id
+    LEFT JOIN patient ON disease.patient_id = patient.id
     `);
     res.send(rows)
 });
 
+router.get('/diseases/:diseaseId', async (req, res) => {
+    const { diseaseId } = req.params;
+    const [rows] = await db.query(`
+    SELECT
+        disease.*,
+        patient.name AS patient_name,
+        patient.age AS patient_age 
+    FROM
+        disease
+    LEFT JOIN patient ON disease.patient_id = patient.id
+    where disease.id = ?
+    `, [diseaseId]);
+    const data: any[] | any = rows;
+
+    res.send(data[0])
+});
+
 router.post('/diseases', async (req, res) => {
     const { name, picture, patient_name, patient_age } = req.body;
-    console.log(req.body);
-
     const [rows] = await db.query(`INSERT INTO patient VALUES(NULL, ?, ?)`, [patient_name, patient_age]);
     const patient: any = rows;
 

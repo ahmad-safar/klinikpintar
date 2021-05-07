@@ -1,21 +1,45 @@
 import Layout from '@/components/Layout'
-import { useRouter } from 'next/dist/client/router'
+import { ApiUrl } from '../_app'
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { ApiUrl } from './_app'
+import { useRouter } from 'next/dist/client/router'
 
-export default function NewDisease() {
+export async function getStaticPaths() {
+  // Call an external API endpoint to get posts
+  const res = await fetch(`${ApiUrl}/diseases`)
+  const diseases: Disease[] = await res.json()
+
+  // Get the paths we want to pre-render based on diseases
+  const paths = diseases.map((disease) => ({
+    params: { id: disease.id.toString() },
+  }))
+
+  // We'll pre-render only these paths at build time.
+  // { fallback: false } means other routes should 404.
+  return { paths, fallback: true }
+}
+
+export async function getStaticProps({ params }) {
+  // params contains the post `id`.
+  // If the route is like /posts/1, then params.id is 1
+  const res = await fetch(`${ApiUrl}/diseases/${params.id}`)
+  const data = await res.json()
+
+  // Pass post data to the page via props
+  return { props: { data } }
+}
+
+type Props = {
+  data: Disease
+}
+
+export default function EditDisease({ data }: Props) {
   const router = useRouter()
-  const [state, setState] = useState({
-    name: '',
-    picture: '',
-    patient_name: '',
-    patient_age: '',
-  })
+  const [state, setState] = useState<Disease>(data)
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    await fetch(`${ApiUrl}/diseases`, {
-      method: 'POST',
+    await fetch(`${ApiUrl}/diseases/${data.id}`, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
       },
@@ -31,7 +55,7 @@ export default function NewDisease() {
     }))
   }
   return (
-    <Layout title="Create Disease">
+    <Layout title="Edit Disease">
       <div>
         <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
           <div className="px-4 py-6 sm:px-0">
@@ -42,10 +66,10 @@ export default function NewDisease() {
                     <div className="md:col-span-1">
                       <div className="px-4 sm:px-0">
                         <h3 className="text-lg font-medium leading-6 text-gray-900">
-                          Create Disease
+                          Edit Disease
                         </h3>
                         <p className="mt-1 text-sm text-gray-600">
-                          Input new disease
+                          Edit current disease
                         </p>
                       </div>
                     </div>
