@@ -5,7 +5,7 @@ import { useRouter } from 'next/dist/client/router'
 
 export default function EditDisease() {
   const router = useRouter()
-  const [loading, useLoading] = useState(true)
+  const [loading, setLoading] = useState(true)
   const [state, setState] = useState<Disease>({
     id: 0,
     name: '',
@@ -16,12 +16,15 @@ export default function EditDisease() {
   })
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch(`${ApiUrl}/diseases/${state.id}`)
-      setState(await res.json())
+    if (router.isReady) {
+      const fetchData = async () => {
+        const res = await fetch(`${ApiUrl}/diseases/${router.query.id}`)
+        setState(await res.json())
+        setLoading(false)
+      }
+      fetchData()
     }
-    fetchData()
-  }, [])
+  }, [router])
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
