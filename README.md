@@ -26,4 +26,6 @@ Frontend: http://localhost:3000
 
 Backend: http://localhost:3001
 
+go to first http://localhost:3001/init for creating tables.
+
 MySQL: localhost:3306
