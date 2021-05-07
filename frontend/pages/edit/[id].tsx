@@ -1,4 +1,4 @@
-import Layout from '@/components/Layout'
+import Layout from '../../components/Layout'
 import { ApiUrl } from '../_app'
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import { useRouter } from 'next/dist/client/router'

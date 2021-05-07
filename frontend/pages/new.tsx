@@ -1,16 +1,14 @@
-import Layout from '@/components/Layout'
+import Layout from '../components/Layout'
 import { useRouter } from 'next/dist/client/router'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { ApiUrl } from './_app'
 
 export default function NewDisease() {
   const router = useRouter()
-  const [state, setState] = useState({
-    name: '',
-    picture: '',
-    patient_name: '',
-    patient_age: '',
-  })
+  const [name, setName] = useState('')
+  const [picture, setPicture] = useState('')
+  const [patient_name, setPatientName] = useState('')
+  const [patient_age, setPatientAge] = useState('')
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
@@ -19,17 +17,11 @@ export default function NewDisease() {
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
       },
-      body: JSON.stringify(state),
+      body: JSON.stringify({ name, picture, patient_name, patient_age }),
     })
     router.push('/')
   }
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setState((prevProps) => ({
-      ...prevProps,
-      [e.target.name]: e.target.value,
-    }))
-  }
   return (
     <Layout title="Create Disease">
       <div>
@@ -64,12 +56,13 @@ export default function NewDisease() {
                                 <div className="mt-1 flex rounded-md shadow-sm">
                                   <input
                                     type="text"
-                                    name="name"
                                     id="name"
+                                    name="name"
+                                    data-testid="name"
                                     className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
                                     placeholder="Name"
-                                    value={state.name}
-                                    onChange={handleInputChange}
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
                                   />
                                 </div>
                               </div>
@@ -85,10 +78,11 @@ export default function NewDisease() {
                                   className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
                                   id="picture"
                                   name="picture"
+                                  data-testid="picture"
                                   type="text"
                                   placeholder="picture"
-                                  value={state.picture}
-                                  onChange={handleInputChange}
+                                  value={picture}
+                                  onChange={(e) => setPicture(e.target.value)}
                                 />
                               </div>
 
@@ -103,10 +97,13 @@ export default function NewDisease() {
                                   className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
                                   id="patient_name"
                                   name="patient_name"
+                                  data-testid="patient_name"
                                   type="text"
                                   placeholder="Patient Name"
-                                  value={state.patient_name}
-                                  onChange={handleInputChange}
+                                  value={patient_name}
+                                  onChange={(e) =>
+                                    setPatientName(e.target.value)
+                                  }
                                 />
                               </div>
 
@@ -122,10 +119,13 @@ export default function NewDisease() {
                                   className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
                                   id="patient_age"
                                   name="patient_age"
+                                  data-testid="patient_age"
                                   type="text"
                                   placeholder="Patient Age"
-                                  value={state.patient_age}
-                                  onChange={handleInputChange}
+                                  value={patient_age}
+                                  onChange={(e) =>
+                                    setPatientAge(e.target.value)
+                                  }
                                 />
                               </div>
                             </div>

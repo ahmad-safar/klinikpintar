@@ -1,0 +1,287 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Create Disease page matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col h-screen"
+  >
+    <nav
+      class="bg-gray-800"
+    >
+      <div
+        class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8"
+      >
+        <div
+          class="relative flex items-center justify-between h-16"
+        >
+          <div
+            class="absolute inset-y-0 left-0 flex items-center sm:hidden"
+          >
+            <button
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+              class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              type="button"
+            >
+              <span
+                class="sr-only"
+              >
+                Open main menu
+              </span>
+              <svg
+                aria-hidden="true"
+                class="block h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4 6h16M4 12h16M4 18h16"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                />
+              </svg>
+              <svg
+                aria-hidden="true"
+                class="hidden h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 18L18 6M6 6l12 12"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start"
+          >
+            <a
+              class="flex-shrink-0 flex items-center"
+              href="/"
+            >
+              <div
+                class="text-white px-3 py-2 rounded-md text-sm font-medium"
+              >
+                Klinik Pintar Test
+              </div>
+            </a>
+            <div
+              class="hidden sm:block sm:ml-6"
+            >
+              <div
+                class="flex space-x-4"
+              >
+                <a
+                  class=" text-white block px-3 py-2 rounded-md text-base font-medium "
+                  href="/"
+                >
+                  Home
+                </a>
+                <a
+                  class=" text-white block px-3 py-2 rounded-md text-base font-medium "
+                  href="/new"
+                >
+                  Create Diseases
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main
+      class="mb-auto"
+    >
+      <div>
+        <div
+          class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8"
+        >
+          <div
+            class="px-4 py-6 sm:px-0"
+          >
+            <div
+              class="flex flex-col"
+            >
+              <div
+                class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8"
+              >
+                <div
+                  class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8"
+                >
+                  <div
+                    class="md:grid md:grid-cols-3 md:gap-6"
+                  >
+                    <div
+                      class="md:col-span-1"
+                    >
+                      <div
+                        class="px-4 sm:px-0"
+                      >
+                        <h3
+                          class="text-lg font-medium leading-6 text-gray-900"
+                        >
+                          Create Disease
+                        </h3>
+                        <p
+                          class="mt-1 text-sm text-gray-600"
+                        >
+                          Input new disease
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="mt-5 md:mt-0 md:col-span-2"
+                    >
+                      <form>
+                        <div
+                          class="shadow sm:rounded-md sm:overflow-hidden"
+                        >
+                          <div
+                            class="px-4 py-5 bg-white space-y-6 sm:p-6"
+                          >
+                            <div
+                              class="grid grid-cols-3 gap-6"
+                            >
+                              <div
+                                class="col-span-3 sm:col-span-2"
+                              >
+                                <label
+                                  class="block text-sm font-medium text-gray-700"
+                                  for="name"
+                                >
+                                  Name
+                                </label>
+                                <div
+                                  class="mt-1 flex rounded-md shadow-sm"
+                                >
+                                  <input
+                                    class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
+                                    data-testid="name"
+                                    id="name"
+                                    name="name"
+                                    placeholder="Name"
+                                    type="text"
+                                    value=""
+                                  />
+                                </div>
+                              </div>
+                              <div
+                                class="col-span-3 sm:col-span-2"
+                              >
+                                <label
+                                  class="block text-sm font-medium text-gray-700"
+                                  for="picture"
+                                >
+                                  Picture
+                                </label>
+                                <input
+                                  class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
+                                  data-testid="picture"
+                                  id="picture"
+                                  name="picture"
+                                  placeholder="picture"
+                                  type="text"
+                                  value=""
+                                />
+                              </div>
+                              <div
+                                class="col-span-3 sm:col-span-2"
+                              >
+                                <label
+                                  class="block text-sm font-medium text-gray-700"
+                                  for="patient_name"
+                                >
+                                  Patient Name
+                                </label>
+                                <input
+                                  class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
+                                  data-testid="patient_name"
+                                  id="patient_name"
+                                  name="patient_name"
+                                  placeholder="Patient Name"
+                                  type="text"
+                                  value=""
+                                />
+                              </div>
+                              <div
+                                class="col-span-3 sm:col-span-2"
+                              >
+                                 
+                                <label
+                                  class="block text-sm font-medium text-gray-700"
+                                  for="patient_age"
+                                >
+                                  Patient Age
+                                </label>
+                                <input
+                                  class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
+                                  data-testid="patient_age"
+                                  id="patient_age"
+                                  name="patient_age"
+                                  placeholder="Patient Age"
+                                  type="text"
+                                  value=""
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="px-4 py-3 bg-gray-50 text-right sm:px-6"
+                          >
+                            <button
+                              class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                              type="submit"
+                            >
+                              Save
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer
+      class="bg-gray-800 text-white"
+    >
+      <div
+        class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8"
+      >
+        <div
+          class="flex items-center justify-between sm:justify-start h-16"
+        >
+          <div
+            class="mr-1"
+          >
+            © 2021
+          </div>
+          <div>
+            Build by
+            <a
+              class="ml-1 underline"
+              href="https://github.com/faropedia/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Ahmad Safar
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</DocumentFragment>
+`;

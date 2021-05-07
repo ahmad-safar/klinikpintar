@@ -75,7 +75,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
                   <Link href="/">
                     <a
                       className={` text-white block px-3 py-2 rounded-md text-base font-medium ${
-                        router.pathname == '/' ? 'bg-gray-900' : ''
+                        router?.pathname == '/' ? 'bg-gray-900' : ''
                       }`}
                     >
                       Home
@@ -84,7 +84,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => {
                   <Link href="/new">
                     <a
                       className={` text-white block px-3 py-2 rounded-md text-base font-medium ${
-                        router.pathname == '/new' ? 'bg-gray-900' : ''
+                        router?.pathname == '/new' ? 'bg-gray-900' : ''
                       }`}
                     >
                       Create Diseases
